@@ -1,4 +1,4 @@
-public class Point {
+public class Point2D {
 /*
  * A class that represents mathematical rational number as ratio
  *
@@ -17,34 +17,49 @@ public class Point {
  */
     private Rational x;
     private Rational y;
-    private Rational z;
 
-    public Point() {
-        this.x = new Rational();
-        this.y = new Rational();
-        this.z = new Rational();
+    public Point2D() {
+        x = new Rational();
+        y = new Rational();
     }
 
-    public Point(Rational ratio1, Rational ratio2, Rational ratio3) {
-        this.x = ratio1;
-        this.y = ratio2;
-        this.z = ratio3;
+    public Point2D(Rational ratio1, Rational ratio2, Rational ratio3) {
+        x = ratio1;
+        y = ratio2;
     }
 
-    public Point(int x_num, int x_den, int y_num, int y_den, int z_num, int z_den) {
-        this.x = new Rational(x_num, x_den);
-        this.y = new Rational(y_num, y_den);
-        this.z = new Rational(z_num, z_den);
+    public Point2D(int x_num, int x_den, int y_num, int y_den) {
+        x = new Rational(x_num, x_den);
+        y = new Rational(y_num, y_den);
+    }
+
+    public Rational getX() {
+        return x;
+    }
+
+    public Rational getY() {
+        return y;
+    }
+
+    public void setX(Rational x) {
+        this.x = x;
+    }
+
+    public void setY(Rational y) {
+        this.y = y;
+    }
+
+    public Point2D vector(Point2D p) {
+        return new Point2D(this.x.subtract(p.x), this.y.subtract(p.y));
     }
 
     public String toString() {
-        return String.format("(x, y, z) = (%s, %s, %s)", x.toString(), y.toString(), z.toString());
+        return String.format("(%s, %s)", x.toString(), y.toString());
     }
 
-    public double getDistance(Point p) {
+    public double getDistance(Point2D p) {
         Rational ratio1 = (this.x.subtract(p.x)).square();
         Rational ratio2 = (this.y.subtract(p.y)).square();
-        Rational ratio3 = (this.z.subtract(p.z)).square();
 
         Rational firstSum = ratio1.add(ratio2);
         return Math.sqrt(firstSum.add(ratio3).rationalToFloat());
@@ -53,7 +68,6 @@ public class Point {
     public double getDistanceFromOrigin() {
         Rational ratio1 = this.x.square();
         Rational ratio2 = this.y.square();
-        Rational ratio3 = this.z.square();
 
         Rational firstSum = ratio1.add(ratio2);
         return Math.sqrt(firstSum.add(ratio3).rationalToFloat());

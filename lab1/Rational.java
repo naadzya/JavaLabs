@@ -43,6 +43,22 @@ public class Rational {
         this.den = den;
     }
 
+    public int getnum() {
+        return num;
+    }
+
+    public int getden() {
+        return den;
+    }
+
+    public void setnum(int num) {
+        this.num = num;
+    }
+
+    public void setden(int den) {
+        this.den = den;
+    }
+
     public Rational add(Rational ratio) {
         int numerator = num*ratio.den + ratio.num*den;
         int denominator = den * ratio.den;
