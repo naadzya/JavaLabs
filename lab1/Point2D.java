@@ -23,7 +23,7 @@ public class Point2D {
         y = new Rational();
     }
 
-    public Point2D(Rational ratio1, Rational ratio2, Rational ratio3) {
+    public Point2D(Rational ratio1, Rational ratio2) {
         x = ratio1;
         y = ratio2;
     }
@@ -61,16 +61,14 @@ public class Point2D {
         Rational ratio1 = (this.x.subtract(p.x)).square();
         Rational ratio2 = (this.y.subtract(p.y)).square();
 
-        Rational firstSum = ratio1.add(ratio2);
-        return Math.sqrt(firstSum.add(ratio3).rationalToFloat());
+        return Math.sqrt(ratio1.add(ratio2).rationalToFloat());
     }
 
     public double getDistanceFromOrigin() {
         Rational ratio1 = this.x.square();
         Rational ratio2 = this.y.square();
 
-        Rational firstSum = ratio1.add(ratio2);
-        return Math.sqrt(firstSum.add(ratio3).rationalToFloat());
+        return Math.sqrt(ratio1.add(ratio2).rationalToFloat());
     }
 
 }

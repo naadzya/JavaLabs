@@ -21,7 +21,7 @@ public class Rational {
         den = 1;
     }
 
-    public static int GCD(int a, int b) {
+    private static int GCD(int a, int b) {
         return b == 0 ? a : GCD(b, a % b);
     }
 
@@ -59,6 +59,12 @@ public class Rational {
         this.den = den;
     }
 
+    public void reduce() {
+        int greatComDiv = GCD(Math.abs(num), Math.abs(den));
+        num /= greatComDiv;
+        den /= greatComDiv;
+    }
+
     public Rational add(Rational ratio) {
         int numerator = num*ratio.den + ratio.num*den;
         int denominator = den * ratio.den;
@@ -74,7 +80,11 @@ public class Rational {
     }
 
     public Rational mult(Rational ratio) {
-        return new Rational(this.num*ratio.num, this.den*ratio.den);
+        return new Rational(num*ratio.num, den*ratio.den);
+    }
+
+    public Rational divide(Rational ratio) {
+        return new Rational(num*ratio.getden(), den*ratio.getnum());
     }
 
     public Rational square() {
