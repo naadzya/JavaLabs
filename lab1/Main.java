@@ -8,9 +8,9 @@ public class Main {
         //Rational z = new Rational(1, 4);
         
         Point2D p1 = new Point2D(1, 1, 1, 1);
-        Point2D p2 = new Point2D(-1, 1, 0, 1);
-        Point2D p3 = new Point2D(0, 2, 0, 1);
-        Point2D p4 = new Point2D(-1, 1, 0, 5);
+        Point2D p2 = new Point2D(-1, 1, -1, 1);
+        Point2D p3 = new Point2D(0, 1, 2, 1);
+        Point2D p4 = new Point2D(10, 5, 0, 5);
 
         Line2D line1 = new Line2D(p1, p2);
         Line2D line2 = new Line2D(p3, p4);

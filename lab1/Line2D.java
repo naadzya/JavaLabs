@@ -46,11 +46,15 @@ public class Line2D{
         Rational a2 = line.p2.getY().subtract(line.p1.getY());
         Rational b2 = line.p1.getX().subtract(line.p2.getX());
         Rational c2 = a1.mult(line.p1.getX()).add(b1.mult(line.p1.getY()));
-        
+
+        // By Cramer’s rule we know that the coordinates of the
+        // intersection point can be fined as
+        // (x0, y0) = ((b1c2-b2c1)/(a1b2-a2b1), (c1a2-c2a1)/(a1b2-a2b1))
+        // so delta is the denominator of two fractions
         Rational delta = a1.mult(b2).subtract(a2.mult(b1));
     
-        Rational resultX = b2.mult(c1).subtract(b1.mult(c2));
-        Rational resultY = a1.mult(c2).subtract(a2.mult(c1));
+        Rational resultX = b1.mult(c2).subtract(b2.mult(c1));
+        Rational resultY = c1.mult(a2).subtract(c2.mult(a1));
 
         return new Point2D(resultX.divide(delta), resultY.divide(delta));
     }
