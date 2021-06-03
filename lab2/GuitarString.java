@@ -65,7 +65,7 @@ public class GuitarString {
     }
 
     public void play() {
-        System.out.println(this.note);
+        System.out.print(this.note);
     }
     
     public String toString() {
