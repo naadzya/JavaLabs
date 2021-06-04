@@ -2,7 +2,7 @@ public class Rational {
 /*
  * A class that represents mathematical rational number as ratio
  *
- * Fields
+ * Attributes
  * ------
  *  num: int
  *      the numerator

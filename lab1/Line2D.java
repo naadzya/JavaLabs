@@ -2,7 +2,7 @@ public class Line2D{
 /*
  * A class that represents a line on a plane with rational coordinates
  *
- * Fields
+ * Attributes
  * ------
  *  p1: Point2D
  *    an object that represents starting point on the line

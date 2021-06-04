@@ -2,7 +2,7 @@ public class Point3D {
 /*
  * A class that represents mathematical rational number as ratio
  *
- * Fields
+ * Attributes
  * ------
  *  x: Rational
  *      the x-coordinate
