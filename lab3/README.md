@@ -24,11 +24,11 @@
 - Провести сортировку камней ожерелья на основе ценности. 
 - Найти камни в ожерелье, соответствующие заданному диапазону параметров прозрачности.
 
-[//]: # (## How to compile
+## How to compile
 
 ```bash
 # in lab3 directory
 find . -name "*.java" -print | xargs javac
 java classes.Main
 ```
-)
+
