@@ -1,6 +1,6 @@
-package classes.SemiGemstone;
+package src.SemiGemstone;
 
-import classes.Stone.Stone;
+import src.Stone.Stone;
 
 public class SemiGemstone extends Stone{
     private SemiGemstonesNames name;
@@ -10,4 +10,9 @@ public class SemiGemstone extends Stone{
         super(mass, cost, value, transparency);
         this.name = SemiGemstonesNames.valueOf(name);
     }
+
+    public String toString() {
+        return name.toString();
+    }
+
 }

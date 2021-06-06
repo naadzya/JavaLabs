@@ -1,6 +1,6 @@
-package classes.Gemstone;
+package src.Gemstone;
 
-import classes.Stone.Stone;
+import src.Stone.Stone;
 
 public class Gemstone extends Stone {
     private GemstonesNames name;
@@ -9,5 +9,9 @@ public class Gemstone extends Stone {
                          int value, int transparency) {
         super(mass, cost, value, transparency);
         this.name = GemstonesNames.valueOf(name);
+    }
+
+    public String toString() {
+        return name.toString();
     }
 }

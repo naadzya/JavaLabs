@@ -28,7 +28,7 @@
 
 ```bash
 # in lab3 directory
-find . -name "*.java" -print | xargs javac
-java classes.Main
+javac --source-path src -d bin $(find . -name "*.java") -cp bin
+java -cp bin src.Main
 ```
 

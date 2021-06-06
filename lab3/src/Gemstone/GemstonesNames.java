@@ -1,4 +1,4 @@
-package classes.Gemstone;
+package src.Gemstone;
 
 public enum GemstonesNames {
     Diamond("Diamond"),
@@ -10,5 +10,9 @@ public enum GemstonesNames {
 
     GemstonesNames(String name) {
         this.name = name;
-    }   
+    }
+
+    public String toString() {
+        return name;
+    }
 }

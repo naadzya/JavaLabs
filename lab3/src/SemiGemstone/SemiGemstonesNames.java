@@ -1,4 +1,4 @@
-package classes.SemiGemstone;
+package src.SemiGemstone;
 
 public enum SemiGemstonesNames {
     Alexandrite("Alexandrite"),
@@ -22,5 +22,9 @@ public enum SemiGemstonesNames {
 
     SemiGemstonesNames(String name) {
         this.name = name;
+    }
+
+    public String toString() {
+        return name;
     }
 }
