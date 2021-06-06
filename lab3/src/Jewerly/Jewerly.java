@@ -58,9 +58,5 @@ public class Jewerly {
         }
         return result;
     }
+
 }
-
-
-
-
-
