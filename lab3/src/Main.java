@@ -265,6 +265,9 @@ public class Main {
             System.out.print("Enter the number of stones in the jewerly: ");
             try {
                 numberOfStones = inputNumber.nextInt();
+                if (numberOfStones <= 0) {
+                    throw new InputMismatchException();
+                }
                 isCorrect = true;
             }
             catch(InputMismatchException e) {
