@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import src.Stone.Stone;
 
-public class Gemstone extends Stone implements Serializable {
+public class Gemstone extends Stone {
     private GemstonesNames name;
 
     public Gemstone(String name, double mass, double cost,
@@ -14,7 +14,8 @@ public class Gemstone extends Stone implements Serializable {
     }
 
     public String toString() {
-        return name.toString() + " -- mass: " + String.valueOf(this.getMass()) + 
+        return "name: "+ name.toString() +
+               ", mass: " + String.valueOf(this.getMass()) + 
                ", cost: " + String.valueOf(this.getCost()) + 
                ", value: " + String.valueOf(this.getValue()) + 
                ", transparency: " + String.valueOf(this.getTransparency());

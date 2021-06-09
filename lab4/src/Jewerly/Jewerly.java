@@ -5,7 +5,9 @@ import src.Gemstone.Gemstone;
 import src.SemiGemstone.SemiGemstone;
 import java.util.Arrays;
 
-public class Jewerly {
+import java.io.Serializable;
+
+public class Jewerly implements Serializable{
     private Stone[] stones;
     private String brand;
 
@@ -58,5 +60,7 @@ public class Jewerly {
         }
         return result;
     }
+
+
 
 }

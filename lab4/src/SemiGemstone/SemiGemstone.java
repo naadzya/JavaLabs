@@ -2,7 +2,7 @@ package src.SemiGemstone;
 
 import src.Stone.Stone;
 
-public class SemiGemstone extends Stone{
+public class SemiGemstone extends Stone {
     private SemiGemstonesNames name;
    
     public SemiGemstone(String name, double mass, double cost,
@@ -12,7 +12,11 @@ public class SemiGemstone extends Stone{
     }
 
     public String toString() {
-        return name.toString();
+        return "name: " + name.toString() + 
+               ", mass: " + String.valueOf(this.getMass()) + 
+               ", cost: " + String.valueOf(this.getCost()) + 
+               ", value: " + String.valueOf(this.getValue()) + 
+               ", transparency: " + String.valueOf(this.getTransparency());
     }
 
 }
