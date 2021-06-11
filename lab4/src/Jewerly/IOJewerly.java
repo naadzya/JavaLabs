@@ -17,6 +17,8 @@ import src.Stone.Stone;
 import src.Gemstone.Gemstone;
 import src.SemiGemstone.SemiGemstone;
 
+import java.util.Arrays;
+
 public class IOJewerly {
     private static final String filepath = "./files/";
     private static final File targetDir = new File(filepath);
@@ -24,7 +26,7 @@ public class IOJewerly {
     public void writeToFile(Jewerly jewerly, String filename) throws IOException {
         File targetFile = new File(targetDir, filename);
 
-        FileOutputStream fileOut = new FileOutputStream(targetFile, true);
+        FileOutputStream fileOut = new FileOutputStream(targetFile, false); //overwrite
         ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
 
         objectOut.writeObject(jewerly);
@@ -56,18 +58,21 @@ public class IOJewerly {
 
         String content = sb.toString();
 
-        System.out.println(content);
-
         JSONObject jsonJewerly = new JSONObject(content);
-        
+
         String brand = (String) jsonJewerly.get("brand");
         JSONArray jsonGemstones = (JSONArray) jsonJewerly.get("gemstones");
+        JSONArray jsonSemiGemstones = (JSONArray) jsonJewerly.get("semigemstones");
 
-        Stone gemstones[] = new Stone[jsonGemstones.length()];
+        Stone stones[] = new Stone[jsonGemstones.length() + jsonSemiGemstones.length()];
         for (int i = 0; i < jsonGemstones.length(); i++) {
-            gemstones[i] = new Gemstone(jsonGemstones.getJSONObject(i));
+            stones[i] = new Gemstone(jsonGemstones.getJSONObject(i));
         }
 
-        writeToFile(new Jewerly(gemstones, brand), destfilename);
+        for (int i = 0; i < jsonSemiGemstones.length(); i++) {
+            stones[i + jsonGemstones.length()] = new SemiGemstone(jsonSemiGemstones.getJSONObject(i));
+        }
+
+        writeToFile(new Jewerly(stones, brand), destfilename);
     }
 }

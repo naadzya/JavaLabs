@@ -10,7 +10,8 @@ import java.io.Serializable;
 public class Jewerly implements Serializable{
     private Stone[] stones;
     private String brand;
-
+    private static final long serialVersionUID = 1256946562800943193L;
+    
     public Jewerly(Stone[] stones, String brand) {
         this.stones = stones;
         this.brand = brand;

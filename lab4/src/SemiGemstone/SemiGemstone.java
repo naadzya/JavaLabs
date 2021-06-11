@@ -1,12 +1,13 @@
 package src.SemiGemstone;
 
 import org.json.JSONObject;
-
+import java.io.Serializable;
 import src.Stone.Stone;
 
 public class SemiGemstone extends Stone {
     private SemiGemstonesNames name;
-   
+    private static final long serialVersionUID = 8369679288113450154L;
+
     public SemiGemstone(String name, double mass, double cost,
                             int value, int transparency) {
         super(mass, cost, value, transparency);

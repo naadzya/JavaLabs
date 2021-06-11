@@ -8,6 +8,7 @@ import src.Stone.Stone;
 
 public class Gemstone extends Stone {
     private GemstonesNames name;
+    private static final long serialVersionUID = 6478001491587966401L;
 
     public Gemstone(String name, double mass, double cost,
                          int value, int transparency) {

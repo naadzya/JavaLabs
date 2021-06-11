@@ -7,6 +7,7 @@ public abstract class Stone implements Serializable {
     private double cost; // in dollars
     private int value;  // in range from 0 to 10
     private int transparency;  // in percentages
+    private static final long serialVersionUID = -8481841362004327337L;
 
     public Stone(double mass, double cost, int value, int transparency) {
         if (mass <= 0 || cost <= 0 || 

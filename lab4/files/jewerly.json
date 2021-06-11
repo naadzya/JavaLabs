@@ -19,11 +19,18 @@
   ],
   "semigemstones": [
     {
-      "name": "Opal",
+      "name": "Moonstone",
       "mass": 2,
       "cost": 60,
       "value": 5,
       "transparency": 36
+    },
+    {
+      "name": "LapisLazuli",
+      "mass": 3,
+      "cost": 45,
+      "value": 3,
+      "transparency": 10
     }
   ]
 }
