@@ -2,6 +2,8 @@ package src.Gemstone;
 
 import java.io.Serializable;
 
+import org.json.JSONObject;
+
 import src.Stone.Stone;
 
 public class Gemstone extends Stone {
@@ -13,6 +15,15 @@ public class Gemstone extends Stone {
         this.name = GemstonesNames.valueOf(name);
     }
 
+    public Gemstone(JSONObject obj) {
+        super(obj.getDouble("mass"),
+              obj.getDouble("cost"),
+              obj.getInt("value"),
+              obj.getInt("transparency")
+              );
+        this.name = GemstonesNames.valueOf(obj.getString("name"));
+    }
+    
     public String toString() {
         return "name: "+ name.toString() +
                ", mass: " + String.valueOf(this.getMass()) + 

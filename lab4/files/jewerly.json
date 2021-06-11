@@ -1,0 +1,29 @@
+{
+  "brand": "Channel",
+  "gemstones": [
+    {
+      "name": "Diamond",
+      "mass": 7,
+      "cost": 100,
+      "value": 9,
+      "transparency": 67
+    },
+    {
+      "name": "Ruby",
+      "mass": 10,
+      "cost": 500,
+      "value": 10,
+      "transparency": 27
+    }
+
+  ],
+  "semigemstones": [
+    {
+      "name": "Opal",
+      "mass": 2,
+      "cost": 60,
+      "value": 5,
+      "transparency": 36
+    }
+  ]
+}

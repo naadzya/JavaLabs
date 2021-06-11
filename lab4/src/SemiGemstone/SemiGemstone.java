@@ -1,5 +1,7 @@
 package src.SemiGemstone;
 
+import org.json.JSONObject;
+
 import src.Stone.Stone;
 
 public class SemiGemstone extends Stone {
@@ -9,6 +11,15 @@ public class SemiGemstone extends Stone {
                             int value, int transparency) {
         super(mass, cost, value, transparency);
         this.name = SemiGemstonesNames.valueOf(name);
+    }
+
+    public SemiGemstone(JSONObject obj) {
+        super(obj.getDouble("mass"),
+              obj.getDouble("cost"),
+              obj.getInt("value"),
+              obj.getInt("transparency")
+              );
+        this.name = SemiGemstonesNames.valueOf(obj.getString("name"));
     }
 
     public String toString() {

@@ -17,18 +17,10 @@ import src.Jewerly.*;
 
 public class Main {
     public static void main(String args[]) {
-        //IOStone testIO = new IOStone();
         IOJewerly testIO = new IOJewerly();
 
-        Gemstone test = new Gemstone("Diamond", 1, 1, 1, 1);
-        SemiGemstone test2 = new SemiGemstone("Opal", 2, 2, 2, 2);
-        
-        Jewerly testjw = new Jewerly(new Stone[] {test, test2}, "mybrand");
-
         try {
-            testIO.writeToFile(testjw, "jewerly.bin");
-            //testIO.writeToFile(test2, "stones.bin");
-            //System.out.println(Arrays.toString(testIO.readFromFile("jewerly.bin")));
+            testIO.jewerlyFromJsonToBin("jewerly.json", "jewerly.bin");
             System.out.println(Arrays.toString(testIO.readFromFile("jewerly.bin").getStones()));
         }
         catch (IOException | ClassNotFoundException e) {
