@@ -31,6 +31,13 @@
       "cost": 45,
       "value": 3,
       "transparency": 10
+    },
+    {
+      "name": "Alexandrite",
+      "mass": 2.2,
+      "cost": 75.5,
+      "value": 4,
+      "transparency": 21
     }
   ]
 }

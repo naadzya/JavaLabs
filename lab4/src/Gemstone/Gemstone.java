@@ -1,9 +1,7 @@
 package src.Gemstone;
 
-import java.io.Serializable;
-
 import org.json.JSONObject;
-
+import java.io.Serializable;
 import src.Stone.Stone;
 
 public class Gemstone extends Stone {
@@ -23,6 +21,10 @@ public class Gemstone extends Stone {
               obj.getInt("transparency")
               );
         this.name = GemstonesNames.valueOf(obj.getString("name"));
+    }
+
+    public String getName() {
+        return name.toString();
     }
     
     public String toString() {

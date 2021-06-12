@@ -23,6 +23,10 @@ public class SemiGemstone extends Stone {
         this.name = SemiGemstonesNames.valueOf(obj.getString("name"));
     }
 
+    public String getName() {
+        return name.toString();
+    }
+
     public String toString() {
         return "name: " + name.toString() + 
                ", mass: " + String.valueOf(this.getMass()) + 
@@ -30,5 +34,4 @@ public class SemiGemstone extends Stone {
                ", value: " + String.valueOf(this.getValue()) + 
                ", transparency: " + String.valueOf(this.getTransparency());
     }
-
 }

@@ -19,7 +19,7 @@
 ## How to compile
 
 ```bash
-jar -xf src/org.json.jar
+jar -xf src/org.json.jar -d bin/
 javac --source-path src -d bin -cp bin $(find . -name "*.java")
 java -cp bin Main.java
 ```

@@ -15,16 +15,12 @@ import src.Gemstone.*;
 import src.SemiGemstone.*;
 import src.Jewerly.*;
 
-public class Main {
+class Main {
     public static void main(String args[]) {
-        IOJewerly testIO = new IOJewerly();
-
-        try {
-            testIO.jewerlyFromJsonToBin("jewerly.json", "jewerly.bin");
-            System.out.println(Arrays.toString(testIO.readFromFile("jewerly.bin").getStones()));
-        }
-        catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        ValueJewerly vj = new ValueJewerly("jewerly.json", "jewerly.bin");
+        TransparentJewerly tj = new TransparentJewerly("jewerly.json", "jewerly.bin",
+                                                       10, 50);
+        vj.start();
+        tj.start();
     }
 }

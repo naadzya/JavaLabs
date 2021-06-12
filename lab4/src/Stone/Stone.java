@@ -65,4 +65,6 @@ public abstract class Stone implements Serializable {
         }
         this.transparency = transparency;
     }
+
+    public abstract String getName();
 }
