@@ -1,0 +1,5 @@
+./src/by/nhryshalevich/main/speech/Word.java
+./src/by/nhryshalevich/main/speech/Sentence.java
+./src/by/nhryshalevich/main/speech/Paragraph.java
+./src/by/nhryshalevich/main/speech/Text.java
+./src/by/nhryshalevich/main/Main.java
