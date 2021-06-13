@@ -1,3 +1,7 @@
+package by.nhryshalevich.main.Point2D;
+
+import by.nhryshalevich.main.Rational.Rational;
+
 public class Point2D {
 /*
  * A class that represents mathematical rational number as ratio
@@ -49,26 +53,7 @@ public class Point2D {
         this.y = y;
     }
 
-    public Point2D vector(Point2D p) {
-        return new Point2D(this.x.subtract(p.x), this.y.subtract(p.y));
-    }
-
     public String toString() {
         return String.format("(%s, %s)", x.toString(), y.toString());
     }
-
-    public double getDistance(Point2D p) {
-        Rational ratio1 = (this.x.subtract(p.x)).square();
-        Rational ratio2 = (this.y.subtract(p.y)).square();
-
-        return Math.sqrt(ratio1.add(ratio2).rationalToFloat());
-    }
-
-    public double getDistanceFromOrigin() {
-        Rational ratio1 = this.x.square();
-        Rational ratio2 = this.y.square();
-
-        return Math.sqrt(ratio1.add(ratio2).rationalToFloat());
-    }
-
 }

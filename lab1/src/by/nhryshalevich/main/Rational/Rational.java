@@ -1,3 +1,5 @@
+package by.nhryshalevich.main.Rational;
+
 public class Rational {
 /*
  * A class that represents mathematical rational number as ratio
@@ -21,8 +23,8 @@ public class Rational {
         den = 1;
     }
 
-    private static int GCD(int a, int b) {
-        return b == 0 ? a : GCD(b, a % b);
+    private static int greatCommonDivisor(int a, int b) {
+        return b == 0 ? a : greatCommonDivisor(b, a % b);
     }
 
     public Rational(int num, int den) {
@@ -35,7 +37,7 @@ public class Rational {
             den *= -1;
         }
 
-        int d = GCD(num, den);
+        int d = greatCommonDivisor(num, den);
         num /= d;
         den /= d;
 
@@ -43,48 +45,26 @@ public class Rational {
         this.den = den;
     }
 
-    public int getnum() {
+    public int getNum() {
         return num;
     }
 
-    public int getden() {
+    public int getDen() {
         return den;
     }
 
-    public void setnum(int num) {
+    public void setNum(int num) {
         this.num = num;
     }
 
-    public void setden(int den) {
+    public void setDen(int den) {
         this.den = den;
     }
 
     public void reduce() {
-        int greatComDiv = GCD(Math.abs(num), Math.abs(den));
+        int greatComDiv = greatCommonDivisor(Math.abs(num), Math.abs(den));
         num /= greatComDiv;
         den /= greatComDiv;
-    }
-
-    public Rational add(Rational ratio) {
-        int numerator = num*ratio.den + ratio.num*den;
-        int denominator = den * ratio.den;
-
-        return new Rational(numerator, denominator);
-    }
-
-    public Rational subtract(Rational ratio) {
-        int numerator = num*ratio.den - ratio.num*den;
-        int denominator = den * ratio.den;
-
-        return new Rational(numerator, denominator);
-    }
-
-    public Rational mult(Rational ratio) {
-        return new Rational(num*ratio.num, den*ratio.den);
-    }
-
-    public Rational divide(Rational ratio) {
-        return new Rational(num*ratio.getden(), den*ratio.getnum());
     }
 
     public Rational square() {
@@ -95,6 +75,7 @@ public class Rational {
         return (float) num/den;
     }
 
+    @Override
     public String toString() {
         if (den == 1) {
             return Integer.toString(num);
