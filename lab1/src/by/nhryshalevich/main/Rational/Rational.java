@@ -82,5 +82,10 @@ public class Rational {
         }
         return String.format("%d/%d", num, den);
     }
+
+    public boolean equals(Rational ratio) {
+        ratio.reduce();
+        return num == ratio.num && den == ratio.den;
+    }
 }
 

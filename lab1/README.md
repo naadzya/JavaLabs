@@ -17,3 +17,6 @@
 javac @sources.txt -d bin -cp bin
 java -cp bin by.nhryshalevich.main.Main
 ```
+
+Lines from the example:
+![geogebra-export.png](geogebra-export.png)

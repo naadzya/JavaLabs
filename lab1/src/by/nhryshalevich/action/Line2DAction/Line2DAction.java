@@ -7,24 +7,29 @@ import by.nhryshalevich.action.RationalAction.RationalAction;
 import by.nhryshalevich.action.Point2DAction.Point2DAction;
 
 public class Line2DAction {
-    public static Point2D getInterisectionWith(Line2D line1, Line2D line2) {
+    public static Point2D getInterisectionWith(Line2D line1, Line2D line2)
+                                                 throws ArithmeticException {
         // a line may de defined as Ax + By + C = 0
         // So here we redefine the lines using the coords of their points
         Rational a1 = RationalAction.subtract(line1.getP1().getY(),
                                               line1.getP2().getY());
         Rational b1 = RationalAction.subtract(line1.getP2().getX(),
                                               line1.getP1().getX());
-        Rational c1 =  RationalAction.subtract(
-                       RationalAction.mult(line1.getP1().getX(), line1.getP2().getY()),
-                       RationalAction.mult(line1.getP2().getX(), line1.getP1().getY()));
+        Rational c1 = RationalAction.subtract(
+                        RationalAction.mult(line1.getP1().getX(), line1.getP2().getY()),
+                        RationalAction.mult(line1.getP2().getX(), line1.getP1().getY()));
 
         Rational a2 = RationalAction.subtract(line2.getP1().getY(),
                                               line2.getP2().getY());
         Rational b2 = RationalAction.subtract(line2.getP2().getX(),
                                               line2.getP1().getX());
-        Rational c2 =  RationalAction.subtract(
-                       RationalAction.mult(line2.getP1().getX(), line2.getP2().getY()),
-                       RationalAction.mult(line2.getP2().getX(), line2.getP1().getY()));
+        Rational c2 = RationalAction.subtract(
+                        RationalAction.mult(line2.getP1().getX(), line2.getP2().getY()),
+                        RationalAction.mult(line2.getP2().getX(), line2.getP1().getY()));
+
+        if (RationalAction.divide(a1, a1).equals(RationalAction.divide(b1, b2))) {
+            throw new ArithmeticException("Lines are parallel");
+        }
 
         // By Cramer’s rule we know that the coordinates of the
         // intersection point can be fined as
