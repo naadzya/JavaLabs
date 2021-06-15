@@ -30,7 +30,7 @@
 
 ```bash
 # in lab3 directory
-javac --source-path src -d bin $(find . -name "*.java") -cp bin
-java -cp bin src.Main
+javac @sources.txt -d bin -cp bin
+java -cp bin by.nhryshalevich.Main
 ```
 
