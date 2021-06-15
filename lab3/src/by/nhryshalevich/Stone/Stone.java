@@ -7,10 +7,10 @@ public abstract class Stone {
     private int transparency;  // in percentages
 
     public Stone(double mass, double cost, int value, int transparency) {
-        if (mass <= 0 || cost <= 0 || 
-            value < 0 || value > 10 || 
+        if (mass <= 0 || cost <= 0 ||
+            value < 0 || value > 10 ||
             transparency < 0 || transparency > 100) {
-            
+
             throw new IllegalArgumentException();
         }
         this.mass = mass;
