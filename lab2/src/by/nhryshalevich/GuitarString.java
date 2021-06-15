@@ -1,3 +1,5 @@
+package by.nhryshalevich;
+
 public class GuitarString {
 /*
  * A class used to represent string of guitar

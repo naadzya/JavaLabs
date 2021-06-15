@@ -1,3 +1,5 @@
+package by.nhryshalevich;
+
 import java.lang.Integer;
 
 public class Birdhouse {
@@ -74,4 +76,4 @@ public class Birdhouse {
         System.out.println(test2.toString());
         System.out.println(testb.hashCode() == test2.hashCode());
     }
-}  
+}
