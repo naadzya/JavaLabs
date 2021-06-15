@@ -1,6 +1,6 @@
-package src.SemiGemstone;
+package by.nhryshalevich.SemiGemstone;
 
-import src.Stone.Stone;
+import by.nhryshalevich.Stone.Stone;
 
 public class SemiGemstone extends Stone{
     private SemiGemstonesNames name;

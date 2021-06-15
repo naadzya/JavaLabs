@@ -1,4 +1,4 @@
-package src.Gemstone;
+package by.nhryshalevich.Gemstone;
 
 public enum GemstonesNames {
     Diamond("Diamond"),

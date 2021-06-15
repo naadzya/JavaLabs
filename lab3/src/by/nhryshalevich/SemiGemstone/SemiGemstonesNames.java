@@ -1,4 +1,4 @@
-package src.SemiGemstone;
+package by.nhryshalevich.SemiGemstone;
 
 public enum SemiGemstonesNames {
     Alexandrite("Alexandrite"),

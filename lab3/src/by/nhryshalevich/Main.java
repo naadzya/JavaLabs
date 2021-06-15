@@ -1,9 +1,9 @@
-package src;
+package by.nhryshalevich;
 
-import src.Stone.Stone;
-import src.Gemstone.*;
-import src.SemiGemstone.*;
-import src.Jewerly.Jewerly;
+import by.nhryshalevich.Stone.Stone;
+import by.nhryshalevich.Gemstone.*;
+import by.nhryshalevich.SemiGemstone.*;
+import by.nhryshalevich.Jewerly.Jewerly;
 
 import java.util.Scanner;
 import java.util.Arrays;

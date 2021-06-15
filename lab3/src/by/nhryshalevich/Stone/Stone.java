@@ -1,4 +1,4 @@
-package src.Stone;
+package by.nhryshalevich.Stone;
 
 public abstract class Stone {
     private double mass; // in carats

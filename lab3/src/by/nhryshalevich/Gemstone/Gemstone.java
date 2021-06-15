@@ -1,6 +1,6 @@
-package src.Gemstone;
+package by.nhryshalevich.Gemstone;
 
-import src.Stone.Stone;
+import by.nhryshalevich.Stone.Stone;
 
 public class Gemstone extends Stone {
     private GemstonesNames name;
