@@ -19,9 +19,9 @@ public class IOStone {
 
         FileOutputStream fileOut = new FileOutputStream(targetFile, true);
         ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-        
+
         objectOut.writeObject(gemstone);
-        
+
         objectOut.close();
     }
 
@@ -31,9 +31,9 @@ public class IOStone {
 
         Stone[] result = {};
 
+        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
         while (true) {
             try {
-                ObjectInputStream objectIn = new ObjectInputStream(fileIn);
                 Stone stone = (Stone) objectIn.readObject();
                 Stone[] temp = new Stone[result.length + 1];
                 for (int j = 0; j < result.length; j++) {
@@ -43,10 +43,12 @@ public class IOStone {
                 result = temp;
             }
             catch (EOFException e) {
+                objectIn.close();
                 break;
             }
         }
 
+        fileIn.close();
         return result;
     }
 

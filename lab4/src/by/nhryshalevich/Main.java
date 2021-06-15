@@ -17,9 +17,17 @@ import by.nhryshalevich.Jewerly.*;
 
 class Main {
     public static void main(String args[]) {
-        ValueJewerly vj = new ValueJewerly("jewerly.json", "jewerly.bin");
-        TransparentJewerly tj = new TransparentJewerly("jewerly.json", "jewerly.bin",
-                                                       10, 50);
+        String inputfile = "jewerly.json",
+               outfile = "jewerly.bin";
+        IOJewerly jewStream = new IOJewerly();
+        try {
+            jewStream.jewerlyFromJsonToBin(inputfile, outfile);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        ValueJewerly vj = new ValueJewerly(outfile);
+        TransparentJewerly tj = new TransparentJewerly(outfile, 10, 50);
         vj.start();
         tj.start();
     }

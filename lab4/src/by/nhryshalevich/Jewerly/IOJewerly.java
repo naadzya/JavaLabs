@@ -41,12 +41,15 @@ public class IOJewerly {
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
         Jewerly result = (Jewerly) objectIn.readObject();
+        fileIn.close();
+        objectIn.close();
         return result;
     }
-     
+
     public void jewerlyFromJsonToBin(String jsonFilename, String destfilename)
         				 throws IOException {
         File targetFile = new File(targetDir, jsonFilename);
+
         FileInputStream fis = new FileInputStream(targetFile);
         byte[] buffer = new byte[10];
         StringBuilder sb = new StringBuilder();

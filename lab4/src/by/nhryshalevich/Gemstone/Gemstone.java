@@ -6,7 +6,7 @@ import by.nhryshalevich.Stone.Stone;
 
 public class Gemstone extends Stone {
     private GemstonesNames name;
-    private static final long serialVersionUID = 6478001491587966401L;
+    //private static final long serialVersionUID = 6478001491587966401L;
 
     public Gemstone(String name, double mass, double cost,
                          int value, int transparency) {
@@ -26,12 +26,12 @@ public class Gemstone extends Stone {
     public String getName() {
         return name.toString();
     }
-    
+
     public String toString() {
         return "name: "+ name.toString() +
-               ", mass: " + String.valueOf(this.getMass()) + 
-               ", cost: " + String.valueOf(this.getCost()) + 
-               ", value: " + String.valueOf(this.getValue()) + 
+               ", mass: " + String.valueOf(this.getMass()) +
+               ", cost: " + String.valueOf(this.getCost()) +
+               ", value: " + String.valueOf(this.getValue()) +
                ", transparency: " + String.valueOf(this.getTransparency());
     }
 }
