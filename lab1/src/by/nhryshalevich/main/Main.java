@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 //import java.util.Arrays;
 
@@ -36,24 +37,37 @@ public class Main {
             new Line2D(lPoint, kPoint), // -x - y = 6
             new Line2D(cPoint, oPoint)  // 10x + 2y = 64 (or 5x + y = 32)
                             };
-
-        System.out.println("All lines: " + Arrays.toString(allLines));
+        Line2D testLine1 = allLines[3];
+        System.out.println("Line " + testLine1.toString()
+                           + " intersect Ox in the point "
+                           + Line2DAction.getIntersectionWithOx(testLine1)
+                           + " and Oy in "
+                           + Line2DAction.getIntersectionWithOy(testLine1));
+        Line2D testLine2 = allLines[1];
+        System.out.println("Line " + testLine1.toString() + " intersect line "
+                           + testLine2.toString()  + " in point "
+                           + Line2DAction.getIntersection(testLine1, testLine2));
 
         // Array of Arrays that are groups of parallel lines
         ArrayList<ArrayList<Line2D>> parallelLines = new ArrayList<ArrayList<Line2D>>();
 
         // This array will be used to remove line if it is parrallel
         // for another one
-        ArrayList<Line2D> allNonparallelLines = new ArrayList<>(Arrays.asList(allLines));
+        ArrayList<Line2D> allNonparallelLines = new ArrayList<>
+                                                        (Arrays.asList(allLines));
 
-        int i = 0, //j = 1,
-            nonParallelLen = allLines.length;
+        System.out.println("\nAll lines:");
+        for (Line2D line: allLines) {
+            System.out.println("  " + line.toString());
+        }
+
+        int i = 0, nonParallelLen = allLines.length;
 
         while (i < nonParallelLen) {
             int indexOfIline = Arrays.asList(allLines).indexOf(allNonparallelLines.get(i));
             for (int j = 1 + indexOfIline; j < allLines.length; j++) {
                 try {
-                    Line2DAction.getInterisectionWith(allNonparallelLines.get(i), allLines[j]);
+                    Line2DAction.getIntersection(allNonparallelLines.get(i), allLines[j]);
                     // No error -- lines are not parallel
                     continue;
                 }
@@ -80,7 +94,7 @@ public class Main {
 
         System.out.println("-------------------------------------");
         for (ArrayList<Line2D> arr: parallelLines) {
-            System.out.println("Group of parallel Lines:");
+            System.out.println("Group of parallel lines:");
             for (Line2D elem: arr) {
                 System.out.print(elem.toString() + "\n");
             }

@@ -19,4 +19,4 @@ java -cp bin by.nhryshalevich.main.Main
 ```
 
 Lines from the example:
-![geogebra-export.png](geogebra-export.png)
+![other/geogebra-export.png](other/geogebra-export.png)

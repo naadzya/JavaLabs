@@ -29,7 +29,7 @@ public class Rational {
 
     public Rational(int num, int den) {
         if (den == 0) {
-            throw new ArithmeticException("Division by zero");
+            throw new ArithmeticException("Division by zero in " + num + "/" + den);
         }
 
         if (den < 0) {
@@ -77,9 +77,9 @@ public class Rational {
 
     @Override
     public String toString() {
-        if (den == 1) {
-            return Integer.toString(num);
-        }
+        // if (den == 1) {
+        //     return Integer.toString(num);
+        // }
         return String.format("%d/%d", num, den);
     }
 
