@@ -1,8 +1,8 @@
-package src.Jewerly;
+package by.nhryshalevich.Jewerly;
 
-import src.Stone.Stone;
-import src.Gemstone.Gemstone;
-import src.SemiGemstone.SemiGemstone;
+import by.nhryshalevich.Stone.Stone;
+import by.nhryshalevich.Gemstone.Gemstone;
+import by.nhryshalevich.SemiGemstone.SemiGemstone;
 import java.util.Arrays;
 
 import java.io.Serializable;

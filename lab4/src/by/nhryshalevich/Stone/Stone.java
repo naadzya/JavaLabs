@@ -1,4 +1,4 @@
-package src.Stone;
+package by.nhryshalevich.Stone;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package src.Jewerly;
+package by.nhryshalevich.Jewerly;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,9 +13,9 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import src.Stone.Stone;
-import src.Gemstone.Gemstone;
-import src.SemiGemstone.SemiGemstone;
+import by.nhryshalevich.Stone.Stone;
+import by.nhryshalevich.Gemstone.Gemstone;
+import by.nhryshalevich.SemiGemstone.SemiGemstone;
 
 import java.util.Arrays;
 

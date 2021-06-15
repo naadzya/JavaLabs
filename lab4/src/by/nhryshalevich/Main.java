@@ -1,4 +1,4 @@
-package src;
+package by.nhryshalevich;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,10 +10,10 @@ import java.io.Serializable;
 
 import java.util.Arrays;
 
-import src.Stone.*;
-import src.Gemstone.*;
-import src.SemiGemstone.*;
-import src.Jewerly.*;
+import by.nhryshalevich.Stone.*;
+import by.nhryshalevich.Gemstone.*;
+import by.nhryshalevich.SemiGemstone.*;
+import by.nhryshalevich.Jewerly.*;
 
 class Main {
     public static void main(String args[]) {

@@ -1,9 +1,9 @@
-package src.Jewerly;
+package by.nhryshalevich.Jewerly;
 
-import src.Stone.*;
-import src.Gemstone.*;
-import src.SemiGemstone.*;
-import src.Jewerly.*;
+import by.nhryshalevich.Stone.*;
+import by.nhryshalevich.Gemstone.*;
+import by.nhryshalevich.SemiGemstone.*;
+import by.nhryshalevich.Jewerly.*;
 import java.io.IOException;
 
 public class ValueJewerly extends Thread {

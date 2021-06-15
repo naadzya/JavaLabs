@@ -19,7 +19,9 @@
 ## How to compile
 
 ```bash
-jar -xf src/org.json.jar -d bin/
+jar -xf src/org.json.jar
+mkdir bin
+mv org bin/
 javac --source-path src -d bin -cp bin $(find . -name "*.java")
 java -cp bin Main.java
 ```

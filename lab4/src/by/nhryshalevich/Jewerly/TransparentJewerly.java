@@ -1,9 +1,9 @@
-package src.Jewerly;
+package by.nhryshalevich.Jewerly;
 
-import src.Stone.*;
-import src.Jewerly.*;
-import src.Gemstone.*;
-import src.SemiGemstone.*;
+import by.nhryshalevich.Stone.*;
+import by.nhryshalevich.Jewerly.*;
+import by.nhryshalevich.Gemstone.*;
+import by.nhryshalevich.SemiGemstone.*;
 import java.io.IOException;
 
 public class TransparentJewerly extends Thread {
