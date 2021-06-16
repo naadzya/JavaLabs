@@ -7,7 +7,7 @@ public class Word {
     public Word(String s) {
         // Constructs a new Word initialized with a string.
         // Remove white space on front and end.
-        word = s.strip();
+        word = s.replace("\\s+", " ");
     }
 
     public String getWord() {

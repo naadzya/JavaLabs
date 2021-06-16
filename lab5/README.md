@@ -19,6 +19,6 @@
 ## How to compile
 
 ```bash
-javac --source-path src -d bin -cp bin $(find . -name "*.java")
+javac @sources.txt -d bin -cp bin
 java -cp bin Main.java
 ```

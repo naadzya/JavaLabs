@@ -6,7 +6,9 @@ public class Sentence {
     private Word[] words;
 
     public Sentence(String sentence) {
-        String[] resultInString = sentence.split("\\s+");
+        // \t is TAB, \x0B is vertical tab, \f is FF (form feed), \r is CR
+        // See https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
+        String[] resultInString = sentence.split("[ \t\\x0B\f\r]+");
         words = new Word[resultInString.length];
         for (int i = 0; i <  resultInString.length; i++) {
                words[i] = new Word(resultInString[i]);

@@ -1,14 +1,17 @@
 package by.nhryshalevich.main.speech;
 
+import java.util.Arrays;
+
 public class Text {
     Paragraph[] paragraphs;
 
     public Text(String text) {
-        String[] resultInString = text.split("\n");
+        String[] resultInString = text.split("\\.\n|\\!\n|\\?\n");
         paragraphs = new Paragraph[resultInString.length];
         for (int i = 0; i < resultInString.length; i++) {
             paragraphs[i] = new Paragraph(resultInString[i].strip());
         }
+        //System.out.println("RESULT IN STRING: " + Arrays.toString(resultInString));
     }
 
     public Paragraph[] getParagraphs() {
@@ -33,7 +36,7 @@ public class Text {
 
     public void breakParaghaphsByLength(int maxLength) {
         for (Paragraph par: paragraphs) {
-            par.breakSentencesByLength();
+            par.breakSentencesByLength(maxLength);
         }
     }
 }

@@ -22,6 +22,6 @@
 jar -xf src/org.json.jar
 mkdir bin
 mv org bin/
-javac --source-path src -d bin -cp bin $(find . -name "*.java")
+javac @sources.txt -d bin -cp bin
 java -cp bin Main.java
 ```
