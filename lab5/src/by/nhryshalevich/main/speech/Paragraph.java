@@ -54,17 +54,14 @@ public class Paragraph {
     }
 
     public void breakSentencesByLength(int maxLength) {
-        String paragraph = toString();
-        // Remove last \n
-        paragraph = paragraph.substring(0, paragraph.length() - 1);
-        String lastLine = paragraph.substring(maxLength);
-        int lastNewlineIndex = maxLength;  // index of last word \n in paragraph
-        while (lastLine.length() > maxLength) {
-            paragraph = paragraph.replace(lastLine, "\n" + lastLine);
-            lastNewlineIndex = paragraph.lastIndexOf("\n");
-            System.out.println(lastLine);
-            lastLine = paragraph.substring(lastNewlineIndex + 1);
+        String paragraphRest = toString();
+        String result = "";
+        while (paragraphRest.length() > maxLength) {
+            result += paragraphRest.substring(0, maxLength) + "\n";
+            paragraphRest = paragraphRest.substring(maxLength);
         }
-        setSentencesFromStr(paragraph);
+        result += paragraphRest;
+        //System.out.println("RESULT: " + result);
+        setSentencesFromStr(result);
     }
 }
