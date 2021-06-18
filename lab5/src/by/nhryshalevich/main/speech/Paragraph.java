@@ -37,7 +37,7 @@ public class Paragraph {
         int n = resultInString.length;
         sentences = new Sentence[n];
         for (int i = 0; i < n; i++) {
-            sentences[i] = new Sentence(resultInString[i].strip());
+            sentences[i] = new Sentence(resultInString[i]);;
         }
     }
 
@@ -54,14 +54,16 @@ public class Paragraph {
     }
 
     public void breakSentencesByLength(int maxLength) {
-        String paragraphRest = toString();
-        String result = "";
+        String original = toString();
+        String result = "", dirtyResult = "", paragraphRest = original;
+        int indexOfLastRestSpace = 0;
         while (paragraphRest.length() > maxLength) {
-            result += paragraphRest.substring(0, maxLength) + "\n";
-            paragraphRest = paragraphRest.substring(maxLength);
+            dirtyResult = result + paragraphRest.substring(0, maxLength);
+            indexOfLastRestSpace = dirtyResult.lastIndexOf(" ");
+            result = dirtyResult.substring(0, indexOfLastRestSpace) + "\n";
+            paragraphRest = original.substring(result.length());
         }
         result += paragraphRest;
-        //System.out.println("RESULT: " + result);
         setSentencesFromStr(result);
     }
 }
