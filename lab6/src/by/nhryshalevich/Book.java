@@ -4,10 +4,12 @@ public class Book {
     private String title;
     private String author;
     private boolean isCheckedOut = false;
+    private boolean readingRoomOnly;
 
-    public Book(title, author) {
+    public Book(String title, String author, boolean readingRoomOnly) {
         this.title = title;
         this.author = author;
+        this.readingRoomOnly = readingRoomOnly;
     }
 
     public String getTitle() {
@@ -32,6 +34,14 @@ public class Book {
 
     public void setIsCheckedOut(boolean isCheckedOut) {
         this.isCheckedOut = isCheckedOut;
+    }
+
+    public boolean getReadingRoomOnly() {
+        return this.readingRoomOnly;
+    }
+
+    public void setReadingRoomOnly(boolean readingRoomOnly) {
+        this.readingRoomOnly = readingRoomOnly;
     }
 
     @Override

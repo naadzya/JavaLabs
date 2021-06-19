@@ -24,5 +24,5 @@
 
 ```bash
 javac @sources.txt -d bin -cp bin
-java -cp bin Main.java
+java -cp by.nhryshalevich.bin Main.java
 ```

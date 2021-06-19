@@ -9,11 +9,11 @@ public class Library {
     private Map<Integer, Book> books;
 
     public Library() {
-        books = new HashMap<Book>();
+        books = new HashMap<Integer, Book>();
     }
 
     public Library(Book[] books) {
-        books = new HashMap<Book>;
+        this.books = new HashMap<Integer, Book>();
         for (Book book: books) {
             this.books.put(book.hashCode(), book);
         }
@@ -23,20 +23,20 @@ public class Library {
         // this.books.addAll(books);
     // }
 
-    public Map<Book> getBooks() {
+    public Map<Integer, Book> getBooks() {
         return this.books;
     }
 
-    public void setBooks(Map<Book> books) {
+    public void setBooks(Map<Integer, Book> books) {
         this.books = books;
     }
 
-    public Integer[] longestTitleAuthor() {
+    public int[] longestTitleAuthor() {
         /* Return length of the the longest title
          * and length the longest author
          */
         int titleLength = 0, authorLength = 0;
-        for (Book book: books.getBooks()) {
+        for (Book book: books.values()) {
             if (titleLength == 0 || book.getTitle().length() > titleLength) {
                 titleLength = book.getTitle().length();
             }
@@ -44,24 +44,31 @@ public class Library {
                 authorLength = book.getAuthor().length();
             }
         }
-        return new Integet[] {titleLength, authorLength};
+        return new int[] {titleLength, authorLength};
     }
 
     @Override
-    public String toString {
-        result = "";
-        Integer[] maxLengths = longestTitleAuthor();
+    public String toString() {
+        int[] maxLengths = longestTitleAuthor();
+        String result = "| Title" + " ".repeat(maxLengths[0] - 5)
+            + " | Author" + " ".repeat(maxLengths[1] - 6)
+            + " | is checked out | reading room only |\n"
+            + "|" + "-".repeat(maxLengths[0] + 2) + "+"
+            + "-".repeat(maxLengths[1] + 2) + "+"
+            + "-".repeat(16) + "+" + "-".repeat(19) + "|\n";
         for (Book entry : books.values()) {
             result += "| " + entry.getTitle()
-                      + " ".repeat(maxlength[0] - entry.getTitle().length())
+                      + " ".repeat(maxLengths[0] - entry.getTitle().length())
                       + " | " + entry.getAuthor()
-                      + " ".repeat(maxlength[1] - entry.getAuthor().length())
-                      + " |\n"
+                      + " ".repeat(maxLengths[1] - entry.getAuthor().length())
+                      + " | " + String.valueOf(entry.getIsCheckedOut())
+                      + " ".repeat(9)
+                      + " | " + String.valueOf(entry.getReadingRoomOnly())
+                      + " ".repeat(13) + " |\n";
         }
         return result;
     }
 
-    public void borrowBook(Book book) {
-
-    }
+    // public void borrowBook(Book book) {
+    // }
 }

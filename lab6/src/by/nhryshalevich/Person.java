@@ -6,18 +6,16 @@ import java.util.HashMap;
 public class Person {
     private String firstName;
     private String lastName;
-    private Map<Book> checkedBooks;
+    // Books that a person took out
+    private Map<Integer, Book> takenOutBooks;
+    // Books that a person took in reading room
+    private Map<Integer, Book> inReadingRoomBooks;
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        checkedBooks = new HashMap<Book>();
-    }
-
-    public Person(String firstName, String lastName, Set<Book> checkedBooks) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.checkedBooks = checkedBooks;
+        takenOutBooks = new HashMap<Integer, Book>();
+        inReadingRoomBooks = new HashMap<Integer, Book>();
     }
 
     public String getFirstName() {
@@ -35,12 +33,33 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public Set<Book> getCheckedBooks() {
-        return this.checkedBooks;
+    public Map<Integer, Book> getTakenOutBooks() {
+        return this.takenOutBooks;
     }
 
-    public void setCheckedBooks(Set<Book> checkedBooks) {
-        this.checkedBooks = checkedBooks;
+    public void setTakenOutBooks(Library lib, Book[] books) {
+        Map<Integer, Book> booksInLib = lib.getBooks();
+        takenOutBooks = new HashMap<Integer, Book>();
+        for (Book book: books) {
+            if (booksInLib.containsKey(book.hashCode())
+                && !book.getReadingRoomOnly()) {
+                    takenOutBooks.put(book.hashCode(), book);
+            }
+        }
+    }
+
+    public Map<Integer, Book> getInReadingRoomBooks() {
+        return this.inReadingRoomBooks;
+    }
+
+    public void setInReadingRoomBooks(Library lib, Book[] books) {
+        Map<Integer, Book> booksInLib = lib.getBooks();
+        inReadingRoomBooks = new HashMap<Integer, Book>();
+        for (Book book: books) {
+            if (booksInLib.containsKey(book.hashCode())) {
+                inReadingRoomBooks.put(book.hashCode(), book);
+            }
+        }
     }
 
 }
