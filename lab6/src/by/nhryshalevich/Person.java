@@ -1,14 +1,17 @@
 package by.nhryshalevich;
 
+import java.util.Map;
+import java.util.HashMap;
+
 public class Person {
     private String firstName;
     private String lastName;
-    private Set<Book> checkedBooks;
+    private Map<Book> checkedBooks;
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        checkedBooks = new HashSet<Book>();
+        checkedBooks = new HashMap<Book>();
     }
 
     public Person(String firstName, String lastName, Set<Book> checkedBooks) {

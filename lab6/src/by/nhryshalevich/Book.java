@@ -1,22 +1,21 @@
 package by.nhryshalevich;
 
 public class Book {
-    private String name;
+    private String title;
     private String author;
-    private int numberOfPages;
+    private boolean isCheckedOut = false;
 
-    public Book(name, author, numberOfPages) {
-        this.name = name;
+    public Book(title, author) {
+        this.title = title;
         this.author = author;
-        this.numberOfPages = numberOfPages;
     }
 
-    public String getName() {
-        return this.name;
+    public String getTitle() {
+        return this.title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getAuthor() {
@@ -27,12 +26,24 @@ public class Book {
         this.author = author;
     }
 
-    public int getNumberOfPages() {
-        return this.numberOfPages;
+    public boolean getIsCheckedOut() {
+        return this.isCheckedOut;
     }
 
-    public void setNumberOfPages(int numberOfPages) {
-        this.numberOfPages = numberOfPages;
+    public void setIsCheckedOut(boolean isCheckedOut) {
+        this.isCheckedOut = isCheckedOut;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + title.hashCode();
+        hash = 31 * hash + author.hashCode();
+        return hash;
+    }
+
+    @Override
+    public String toString() {
+        return author + " - \"" + title + "\"";
+    }
 }
