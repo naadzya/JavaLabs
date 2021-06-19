@@ -62,4 +62,14 @@ public class Person {
         }
     }
 
+    public void borrowBook(Library lib, Book book) throws IllegalAccessException {
+        lib.borrowBook(book);
+        takenOutBooks.put(book.hashCode(), book);
+    }
+
+    public void takeBookInReadingRoom(Library lib, Book book)
+                                                throws IllegalAccessException {
+        lib.takeBookInReadingRoom(book);
+        inReadingRoomBooks.put(book.hashCode(), book);
+    }
 }

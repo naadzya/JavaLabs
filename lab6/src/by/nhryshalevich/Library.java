@@ -69,6 +69,21 @@ public class Library {
         return result;
     }
 
-    // public void borrowBook(Book book) {
-    // }
+    public void borrowBook(Book book) throws IllegalAccessException {
+        /* Borrow book NOT in reading room */
+        if (! books.containsKey(book.hashCode())) {
+            throw new IllegalAccessException("Book is not found in library");
+        }
+        if (book.getIsCheckedOut() || book.getReadingRoomOnly()) {
+            throw new IllegalAccessException("The book is already taken out or can be borrowed only in reading room");
+        }
+        book.setIsCheckedOut(true);
+    }
+
+    public void takeBookInReadingRoom(Book book) throws IllegalAccessException {
+        if (! books.containsKey(book.hashCode())) {
+            throw new IllegalAccessException("Book is not found in library");
+        }
+        book.setIsCheckedOut(true);
+    }
 }
