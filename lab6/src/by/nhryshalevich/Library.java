@@ -3,7 +3,7 @@ package by.nhryshalevich;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Arrays;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Library {
     private Map<Integer, Book> books;
@@ -18,10 +18,6 @@ public class Library {
             this.books.put(book.hashCode(), book);
         }
     }
-
-    // public Library(List<Book> books) {
-        // this.books.addAll(books);
-    // }
 
     public Map<Integer, Book> getBooks() {
         return this.books;
@@ -47,25 +43,47 @@ public class Library {
         return new int[] {titleLength, authorLength};
     }
 
+    public Book[] getAllAvailableBooks() {
+        ArrayList<Book> allBooks = new ArrayList<Book>();
+        for (Book book: books.values()) {
+            if (!book.getIsCheckedOut()) {
+                allBooks.add(book);
+            }
+        }
+        return allBooks.toArray(new Book[0]);
+    }
+
+    public Book[] getAllAvailableReadingRoomBooks() {
+        ArrayList<Book> allBooks = new ArrayList<Book>();
+        for (Book book: books.values()) {
+            if (!book.getIsCheckedOut() && book.getReadingRoomOnly()) {
+                allBooks.add(book);
+            }
+        }
+        return allBooks.toArray(new Book[0]);
+    }
+
     @Override
     public String toString() {
         int[] maxLengths = longestTitleAuthor();
-        String result = "| Title" + " ".repeat(maxLengths[0] - 5)
+        String result = " Title" + " ".repeat(maxLengths[0] - 5)
             + " | Author" + " ".repeat(maxLengths[1] - 6)
-            + " | is checked out | reading room only |\n"
-            + "|" + "-".repeat(maxLengths[0] + 2) + "+"
+            + " | is checked out | reading room only\n"
+             + "-".repeat(maxLengths[0] + 2) + "+"
             + "-".repeat(maxLengths[1] + 2) + "+"
-            + "-".repeat(16) + "+" + "-".repeat(19) + "|\n";
+            + "-".repeat(16) + "+" + "-".repeat(19) + "\n";
         for (Book entry : books.values()) {
-            result += "| " + entry.getTitle()
+            int additionalChar = entry.getIsCheckedOut() ? 1 : 0;
+            result += " " + entry.getTitle()
                       + " ".repeat(maxLengths[0] - entry.getTitle().length())
                       + " | " + entry.getAuthor()
                       + " ".repeat(maxLengths[1] - entry.getAuthor().length())
                       + " | " + String.valueOf(entry.getIsCheckedOut())
-                      + " ".repeat(9)
+                      + " ".repeat(9 + additionalChar)
                       + " | " + String.valueOf(entry.getReadingRoomOnly())
-                      + " ".repeat(13) + " |\n";
+                      + " ".repeat(13) + " \n";
         }
+        result += "-".repeat(42 + maxLengths[0] + maxLengths[1]) + "\n";
         return result;
     }
 
@@ -83,6 +101,9 @@ public class Library {
     public void takeBookInReadingRoom(Book book) throws IllegalAccessException {
         if (! books.containsKey(book.hashCode())) {
             throw new IllegalAccessException("Book is not found in library");
+        }
+        if (book.getIsCheckedOut()) {
+            throw new IllegalAccessException("Book is already taken out");
         }
         book.setIsCheckedOut(true);
     }

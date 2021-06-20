@@ -2,18 +2,22 @@ package by.nhryshalevich;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Random;
+import java.util.Collection;
 
-public class Person {
+public class Person extends Thread {
     private String firstName;
     private String lastName;
+    private Library lib;
     // Books that a person took out
     private Map<Integer, Book> takenOutBooks;
     // Books that a person took in reading room
     private Map<Integer, Book> inReadingRoomBooks;
 
-    public Person(String firstName, String lastName) {
+    public Person(String firstName, String lastName, Library lib) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.lib = lib;
         takenOutBooks = new HashMap<Integer, Book>();
         inReadingRoomBooks = new HashMap<Integer, Book>();
     }
@@ -37,7 +41,7 @@ public class Person {
         return this.takenOutBooks;
     }
 
-    public void setTakenOutBooks(Library lib, Book[] books) {
+    public void setTakenOutBooks(Book[] books) {
         Map<Integer, Book> booksInLib = lib.getBooks();
         takenOutBooks = new HashMap<Integer, Book>();
         for (Book book: books) {
@@ -48,11 +52,19 @@ public class Person {
         }
     }
 
+    public Library getLib() {
+        return this.lib;
+    }
+
+    public void setLib(Library lib) {
+        this.lib = lib;
+    }
+
     public Map<Integer, Book> getInReadingRoomBooks() {
         return this.inReadingRoomBooks;
     }
 
-    public void setInReadingRoomBooks(Library lib, Book[] books) {
+    public void setInReadingRoomBooks(Book[] books) {
         Map<Integer, Book> booksInLib = lib.getBooks();
         inReadingRoomBooks = new HashMap<Integer, Book>();
         for (Book book: books) {
@@ -62,14 +74,63 @@ public class Person {
         }
     }
 
-    public void borrowBook(Library lib, Book book) throws IllegalAccessException {
+    public void borrowBook(Book book) throws IllegalAccessException {
         lib.borrowBook(book);
         takenOutBooks.put(book.hashCode(), book);
     }
 
-    public void takeBookInReadingRoom(Library lib, Book book)
-                                                throws IllegalAccessException {
+    public void takeBookInReadingRoom(Book book) throws IllegalAccessException {
         lib.takeBookInReadingRoom(book);
         inReadingRoomBooks.put(book.hashCode(), book);
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
+
+    public void run() {
+        /* Borrow one book and take one book in reading room
+         */
+        int bookIndex = 0;
+        Book[] allBooks = lib.getAllAvailableBooks();
+        while (takenOutBooks.isEmpty()) {
+            bookIndex = new Random().nextInt(allBooks.length);
+            try {
+                borrowBook(allBooks[bookIndex]);
+                try {
+                    Thread.sleep(1);
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            catch(IllegalAccessException e) {
+                continue;
+            }
+        }
+        System.out.println(toString() + " has just taken "
+                           + allBooks[bookIndex].toString());
+
+        Book[] allReadingRoomBooks = lib.getAllAvailableReadingRoomBooks();
+        while (inReadingRoomBooks.isEmpty()) {
+            bookIndex = new Random().nextInt(allReadingRoomBooks.length);
+            try {
+                takeBookInReadingRoom(allReadingRoomBooks[bookIndex]);
+                try {
+                    Thread.sleep(1);
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            catch(IllegalAccessException e) {
+                continue;
+            }
+        }
+
+        System.out.println(toString() + " has just taken "
+                           + allReadingRoomBooks[bookIndex].toString()
+                           + " in reading room");
     }
 }
