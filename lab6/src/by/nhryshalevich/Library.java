@@ -107,4 +107,8 @@ public class Library {
         }
         book.setIsCheckedOut(true);
     }
+
+    public void dropOffBook(Book book) {
+        book.setIsCheckedOut(false);
+    }
 }

@@ -133,4 +133,15 @@ public class Person extends Thread {
                            + allReadingRoomBooks[bookIndex].toString()
                            + " in reading room");
     }
+
+    public void dropOffAllBook() {
+        for (Book book: takenOutBooks.values()) {
+            lib.dropOffBook(book);
+        }
+        takenOutBooks = new HashMap<Integer, Book>();
+        for (Book book: inReadingRoomBooks.values()) {
+            lib.dropOffBook(book);
+        }
+        inReadingRoomBooks = new HashMap<Integer, Book>();
+    }
 }

@@ -16,6 +16,7 @@ public class Main {
         System.out.println("1 - Add new person in group");
         System.out.println("2 - Get all books in Library");
         System.out.println("3 - Let all people in the group borrow one book and take one book in reading room");
+        System.out.println("4 - Drop off all the books");
         System.out.print("Your choise: ");
 
         selection = input.nextInt();
@@ -61,8 +62,13 @@ public class Main {
                     break;
                 case 3:
                     List<Thread> threadList = new ArrayList<Thread>();
-                    for (int i = 0; i < people.size(); i++) {
-                        people.get(i).start();
+                    try {
+                        for (int i = 0; i < people.size(); i++) {
+                            people.get(i).start();
+                        }
+                    }
+                    catch (IllegalThreadStateException e) {
+                        System.out.println("Can't borrow the books");
                     }
                     for (int i = 0; i < people.size(); i++) {
                         try {
@@ -73,6 +79,11 @@ public class Main {
                         }
                     }
                     break;
+                case 4:
+                    for (Person person: people) {
+                        person.dropOffAllBook();
+                    }
+                    break;
                 case 0:
                     break;
                 default:
@@ -80,5 +91,6 @@ public class Main {
             }
             userChoice = defaultMenu();
         }
+        System.out.println("Bye!");
     }
 }
