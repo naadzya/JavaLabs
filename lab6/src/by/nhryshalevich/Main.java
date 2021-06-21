@@ -68,7 +68,7 @@ public class Main {
                         }
                     }
                     catch (IllegalThreadStateException e) {
-                        System.out.println("Can't borrow the books");
+                        break;
                     }
                     for (int i = 0; i < people.size(); i++) {
                         try {
