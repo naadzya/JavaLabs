@@ -1,10 +1,10 @@
 package by.nhryshalevich.Stone;
 
 public abstract class Stone {
-    private double mass; // in carats
-    private double cost; // in dollars
-    private int value;  // in range from 0 to 10
-    private int transparency;  // in percentages
+    protected double mass; // in carats
+    protected double cost; // in dollars
+    protected int value;  // in range from 0 to 10
+    protected int transparency;  // in percentages
 
     public Stone(double mass, double cost, int value, int transparency) {
         if (mass <= 0 || cost <= 0 ||

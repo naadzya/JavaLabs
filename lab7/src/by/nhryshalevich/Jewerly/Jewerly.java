@@ -21,7 +21,7 @@ public class Jewerly {
         }
         return total;
     }
-    
+
     public void sortStonesByValue()
     {
         int n = stones.length;

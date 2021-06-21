@@ -4,7 +4,7 @@ import by.nhryshalevich.Stone.Stone;
 
 public class SemiGemstone extends Stone{
     private SemiGemstonesNames name;
-   
+
     public SemiGemstone(String name, double mass, double cost,
                             int value, int transparency) {
         super(mass, cost, value, transparency);
@@ -12,7 +12,9 @@ public class SemiGemstone extends Stone{
     }
 
     public String toString() {
-        return name.toString();
+        return name.toString() + " mass: " + String.valueOf(mass)
+            + " cost: " + String.valueOf(cost) + " value: " + value
+            + " transparency: " + transparency + "\n";
     }
 
 }

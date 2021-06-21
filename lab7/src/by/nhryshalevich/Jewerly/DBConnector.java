@@ -3,6 +3,7 @@ package by.nhryshalevich.Jewerly;
 import by.nhryshalevich.Stone.*;
 import by.nhryshalevich.Gemstone.*;
 import by.nhryshalevich.SemiGemstone.*;
+import java.util.ArrayList;
 import java.sql.*;
 
 public class DBConnector {
@@ -40,14 +41,59 @@ public class DBConnector {
         this.passwd = passwd;
     }
 
-    public void getGemstones(String tablename) throws SQLException, ClassNotFoundException {
+    public Gemstone[] getGemstonesFromDB(String tablename)
+                                throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection conn = DriverManager.getConnection(url, username, passwd);
         Statement stmt = conn.createStatement();
-        ResultSet result = stmt.executeQuery("SELECT name, mass FROM " + tablename);
+        ResultSet dbResult = stmt.executeQuery("SELECT name, mass, cost, value, transparency FROM " + tablename);
 
-        while (result.next()) {
-            System.out.println(result.getString("name") + "\t" + result.getString("mass"));
+        ArrayList<Gemstone> stones = new ArrayList<Gemstone>();
+
+        while (dbResult.next()) {
+            stones.add(new Gemstone(dbResult.getString("name"),
+                                    dbResult.getDouble("mass"),
+                                    dbResult.getDouble("cost"),
+                                    dbResult.getInt("value"),
+                                    dbResult.getInt("transparency")
+                                    ));
         }
+        return stones.toArray(new Gemstone[0]);
+    }
+
+    public SemiGemstone[] getSemiGemstonesFromDB(String tablename)
+                                throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection(url, username, passwd);
+        Statement stmt = conn.createStatement();
+        ResultSet dbResult = stmt.executeQuery("SELECT name, mass, cost, value, transparency FROM " + tablename);
+
+        ArrayList<SemiGemstone> stones = new ArrayList<SemiGemstone>();
+
+        while (dbResult.next()) {
+            stones.add(new SemiGemstone(dbResult.getString("name"),
+                                        dbResult.getDouble("mass"),
+                                        dbResult.getDouble("cost"),
+                                        dbResult.getInt("value"),
+                                        dbResult.getInt("transparency")
+                                        ));
+        }
+        return stones.toArray(new SemiGemstone[0]);
+    }
+
+    public Jewerly getJewerlyUsingDB(String gemTablename, String semigemTablename,
+                                     String brand) throws SQLException,
+                                                          ClassNotFoundException {
+        Gemstone[] gemstones = getGemstonesFromDB(gemTablename);
+        SemiGemstone[] semigemstones = getSemiGemstonesFromDB(semigemTablename);
+        ArrayList<Stone> allStones = new ArrayList<Stone>();
+
+        for (Gemstone stone: gemstones) {
+            allStones.add(stone);
+        }
+        for (SemiGemstone stone: semigemstones) {
+            allStones.add(stone);
+        }
+        return new Jewerly(allStones.toArray(new Stone[0]), brand);
     }
 }

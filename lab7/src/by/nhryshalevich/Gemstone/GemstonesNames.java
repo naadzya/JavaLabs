@@ -4,6 +4,7 @@ public enum GemstonesNames {
     Diamond("Diamond"),
     Ruby("Ruby"),
     BlueSapphire("BlueSapphire"),
+    BlueSapphite("BlueSapphite"),
     Emerald("Emerald");
 
     String name;

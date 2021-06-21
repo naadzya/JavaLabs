@@ -12,6 +12,8 @@ public class Gemstone extends Stone {
     }
 
     public String toString() {
-        return name.toString();
+        return name.toString() + " mass: " + String.valueOf(mass)
+            + " cost: " + String.valueOf(cost) + " value: " + value
+            + " transparency: " + transparency + "\n";
     }
 }
