@@ -59,4 +59,11 @@ public class Jewerly {
         return result;
     }
 
+    public String toString(){
+        String result = brand + "'s jewerly with the next stones:\n";
+        for (Stone stone: stones) {
+            result += stone.toString();
+        }
+        return result;
+    }
 }

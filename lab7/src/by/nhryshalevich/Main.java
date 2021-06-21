@@ -12,8 +12,6 @@ public class Main {
         Console console = System.console();
         char[] passwd = console.readPassword("Enter password for lab7user: ");
         String providedPassword = String.valueOf(passwd);
-        // delete password from memory
-        Arrays.fill(passwd, 'x');
 
         DBConnector connector = new DBConnector("jdbc:mysql://172.17.18.111:3306/stonesdb", "lab7user", providedPassword);
 
@@ -21,10 +19,10 @@ public class Main {
             Jewerly jewerly = connector.getJewerlyUsingDB("gemstones",
                                                           "semigemstones",
                                                           "mybrand");
-            System.out.println(Arrays.toString(jewerly.getStones()));
+            System.out.print(jewerly.toString());
         }
         catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Wrong password");
+            System.out.println("Server error or provided password is wrong");
         }
     }
 }
