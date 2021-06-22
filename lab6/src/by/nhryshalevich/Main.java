@@ -37,7 +37,7 @@ public class Main {
                 new Book("A Walk To Remember", "Nicolas Sparks", false),
                 new Book("To Kill a Mackingbird", "Harper Lee", false),
                 new Book("Alice's Adventures in Wonderland", "Lewis Carroll", false),
-                new Book("Pride and Prejudice", "Jate Austen", false),
+                new Book("Pride and Prejudice", "Jane Austen", false),
                 new Book("Me Before You", "Jojo Mores", false),
                 new Book("They Do It With Mirrors", "Agata Christie", true),
                 new Book("Winnie-the-Pooh", "Alan Milne", true),
@@ -63,9 +63,7 @@ public class Main {
                 case 3:
                     List<Thread> threadList = new ArrayList<Thread>();
                     try {
-                        for (int i = 0; i < people.size(); i++) {
-                            people.get(i).start();
-                        }
+                        people.parallelStream().forEach(item -> item.start());
                     }
                     catch (IllegalThreadStateException e) {
                         break;

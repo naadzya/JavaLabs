@@ -92,46 +92,45 @@ public class Person extends Thread {
     public void run() {
         /* Borrow one book and take one book in reading room
          */
-        int bookIndex = 0;
+        int bookIndex = 0, readingBookIndex = 0;
         Book[] allBooks = lib.getAllAvailableBooks();
-        while (takenOutBooks.isEmpty()) {
+        while (takenOutBooks.isEmpty() || inReadingRoomBooks.isEmpty()) {
             bookIndex = new Random().nextInt(allBooks.length);
-            try {
-                borrowBook(allBooks[bookIndex]);
+            readingBookIndex = new Random().nextInt(allBooks.length);
+            if (takenOutBooks.isEmpty()) {
                 try {
-                    Thread.sleep(1);
-                }
-                catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            catch(IllegalAccessException e) {
-                continue;
-            }
-        }
-        System.out.println(toString() + " has just taken "
+                    borrowBook(allBooks[bookIndex]);
+                    System.out.println(toString() + " has just taken "
                            + allBooks[bookIndex].toString());
-
-        allBooks = lib.getAllAvailableBooks();
-        while (inReadingRoomBooks.isEmpty()) {
-            bookIndex = new Random().nextInt(allBooks.length);
-            try {
-                takeBookInReadingRoom(allBooks[bookIndex]);
-                try {
-                    Thread.sleep(1);
+                    try {
+                        Thread.sleep(1);
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-                catch (InterruptedException e) {
-                    e.printStackTrace();
+                catch(IllegalAccessException e) {
+                    continue;
                 }
             }
-            catch(IllegalAccessException e) {
-                continue;
+            if (inReadingRoomBooks.isEmpty()) {
+                try {
+                    takeBookInReadingRoom(allBooks[readingBookIndex]);
+                    System.out.println(toString() + " has just taken "
+                           + allBooks[readingBookIndex].toString()
+                           + " in reading room");
+                    try {
+                        Thread.sleep(1);
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                catch(IllegalAccessException e) {
+                    continue;
+                }
             }
         }
-
-        System.out.println(toString() + " has just taken "
-                           + allBooks[bookIndex].toString()
-                           + " in reading room");
     }
 
     public void dropOffAllBook() {
