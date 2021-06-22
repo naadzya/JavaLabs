@@ -112,11 +112,11 @@ public class Person extends Thread {
         System.out.println(toString() + " has just taken "
                            + allBooks[bookIndex].toString());
 
-        Book[] allReadingRoomBooks = lib.getAllAvailableReadingRoomBooks();
+        allBooks = lib.getAllAvailableBooks();
         while (inReadingRoomBooks.isEmpty()) {
-            bookIndex = new Random().nextInt(allReadingRoomBooks.length);
+            bookIndex = new Random().nextInt(allBooks.length);
             try {
-                takeBookInReadingRoom(allReadingRoomBooks[bookIndex]);
+                takeBookInReadingRoom(allBooks[bookIndex]);
                 try {
                     Thread.sleep(1);
                 }
@@ -130,7 +130,7 @@ public class Person extends Thread {
         }
 
         System.out.println(toString() + " has just taken "
-                           + allReadingRoomBooks[bookIndex].toString()
+                           + allBooks[bookIndex].toString()
                            + " in reading room");
     }
 
